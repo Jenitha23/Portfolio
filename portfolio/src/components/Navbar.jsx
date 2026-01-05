@@ -47,7 +47,7 @@ const Navbar = () => {
             transition={{ delay: 0.2 }}
             className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent"
           >
-            Portfolio
+            MyPortfolio
           </motion.div>
 
           <div className="hidden md:flex space-x-8">

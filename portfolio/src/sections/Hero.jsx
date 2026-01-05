@@ -1,121 +1,157 @@
-import { motion } from 'framer-motion';
-import { FaArrowDown } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import { FaArrowDown, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Hero = () => {
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToSection = (id) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const tilt = {
+    whileHover: {
+      rotateX: -8,
+      rotateY: 8,
+      scale: 1.08,
+    },
+    transition: { type: "spring", stiffness: 200, damping: 15 },
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      <section
+          id="home"
+          className="relative min-h-screen flex items-center justify-center overflow-hidden
+      bg-gradient-to-br from-[#020617] via-[#020617] to-black"
+      >
+        {/* Floating dots background */}
+        {[...Array(25)].map((_, i) => (
+            <motion.span
+                key={i}
+                className="absolute w-1 h-1 bg-emerald-400/40 rounded-full"
+                animate={{
+                  y: [0, -40, 0],
+                  opacity: [0.3, 1, 0.3],
+                }}
+                transition={{
+                  duration: 4 + i * 0.3,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                }}
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+            />
+        ))}
 
-      <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-500/30 rounded-full filter blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/20 rounded-full filter blur-3xl animate-pulse delay-700"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+        {/* Content */}
+        <div className="relative z-10 text-center px-6 max-w-4xl">
+          <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-emerald-400 uppercase tracking-widest mb-4"
           >
-            <motion.div
+            Hello, I'm
+          </motion.p>
+
+          <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-7xl font-extrabold mb-6"
+          >
+          <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400
+          bg-clip-text text-transparent animate-gradient">
+            Jenitha Johnson Maxi
+          </span>
+          </motion.h1>
+
+          <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-xl md:text-2xl text-gray-300 mb-6"
+          >
+            Computer Science Undergraduate @ SLIIT
+          </motion.p>
+
+          <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="max-w-2xl mx-auto text-gray-400 mb-12"
+          >
+            Passionate about
+            <span className="text-emerald-400 font-medium"> Full Stack Development</span>,
+            <span className="text-teal-400 font-medium"> AI/ML</span>, and
+            <span className="text-cyan-400 font-medium"> Mathematics</span>.
+          </motion.p>
+
+          {/* Buttons with 3D hover */}
+          <div className="flex flex-col sm:flex-row gap-5 justify-center mb-14">
+            <motion.button
+                {...tilt}
+                onClick={() => scrollToSection("#projects")}
+                className="px-8 py-4 rounded-xl font-semibold text-white
+            bg-gradient-to-r from-emerald-500 to-teal-500
+            shadow-lg shadow-emerald-500/40"
+            >
+              View Projects
+            </motion.button>
+
+            <motion.button
+                {...tilt}
+                onClick={() => scrollToSection("#contact")}
+                className="px-8 py-4 rounded-xl font-semibold text-white
+            border border-emerald-400/50 hover:bg-emerald-400/10"
+            >
+              Contact Me
+            </motion.button>
+          </div>
+
+          {/* Connect with me */}
+          <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="mb-6"
-            >
-              <span className="text-emerald-400 font-medium text-lg">Hello, I'm</span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-6xl font-bold text-white mb-6"
-            >
-              <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                Jenitha Johnson Maxi
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-300 mb-4"
-            >
-              Computer Science Undergraduate @ SLIIT
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg text-gray-400 mb-12"
-            >
-              Passionate about <span className="text-emerald-400 font-semibold">Full Stack Development</span>,
-              <span className="text-teal-400 font-semibold"> AI/ML</span>, and
-              <span className="text-cyan-400 font-semibold"> Mathematics</span>
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <button
-                onClick={() => scrollToSection('#projects')}
-                className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg font-semibold hover:from-emerald-600 hover:to-teal-600 transform hover:scale-105 transition-all duration-300 shadow-lg"
-              >
-                View Projects
-              </button>
-              <button
-                onClick={() => scrollToSection('#contact')}
-                className="px-8 py-4 bg-gray-800 text-white rounded-lg font-semibold border-2 border-emerald-500/50 hover:bg-gray-700 hover:border-emerald-400 transform hover:scale-105 transition-all duration-300"
-              >
-                Contact Me
-              </button>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden md:flex justify-center"
+              transition={{ delay: 0.6 }}
+              className="text-gray-400 mb-4 uppercase tracking-wider text-sm"
           >
-            <div className="relative w-80 h-80">
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-2xl blur-2xl opacity-20"></div>
-              <img
-                src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt="Jenitha Johnson Maxi"
-                className="relative w-full h-full object-cover rounded-2xl shadow-2xl border-2 border-emerald-400/30"
-              />
-            </div>
-          </motion.div>
+            Connect with me
+          </motion.p>
+
+          {/* Social icons with 3D hover */}
+          <div className="flex justify-center gap-8">
+            <motion.a
+                {...tilt}
+                href="https://github.com/Jenitha23"
+                target="_blank"
+                rel="noreferrer"
+                className="p-4 rounded-full bg-white/5 backdrop-blur
+            hover:bg-emerald-400/20"
+            >
+              <FaGithub className="text-2xl text-gray-300 hover:text-emerald-400" />
+            </motion.a>
+
+            <motion.a
+                {...tilt}
+                href="https://www.linkedin.com/in/jenitha-johnson-maxi-84631621b"
+                target="_blank"
+                rel="noreferrer"
+                className="p-4 rounded-full bg-white/5 backdrop-blur
+            hover:bg-emerald-400/20"
+            >
+              <FaLinkedin className="text-2xl text-gray-300 hover:text-emerald-400" />
+            </motion.a>
+          </div>
         </div>
 
+        {/* Scroll indicator */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-emerald-400/70"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
         >
-          <button
-            onClick={() => scrollToSection('#about')}
-            className="text-emerald-400 animate-bounce"
-          >
-            <FaArrowDown size={24} />
-          </button>
+          <FaArrowDown />
         </motion.div>
-      </div>
-    </section>
+      </section>
   );
 };
 
