@@ -25,20 +25,20 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       label: 'Email',
-      value: 'contact@example.com',
-      href: 'mailto:contact@example.com'
+      value: 'jenithamaxi17@gmail.com',
+      href: 'jenithamaxi17@gmail.com'
     },
     {
       icon: FaGithub,
       label: 'GitHub',
-      value: 'github.com/yourusername',
-      href: 'https://github.com'
+      value: 'https://github.com/Jenitha23',
+      href: 'https://github.com/Jenitha23'
     },
     {
       icon: FaLinkedin,
       label: 'LinkedIn',
-      value: 'linkedin.com/in/yourprofile',
-      href: 'https://linkedin.com'
+      value: 'www.linkedin.com/in/jenitha-johnson-maxi-84631621b',
+      href: 'www.linkedin.com/in/jenitha-johnson-maxi-84631621b'
     }
   ];
 

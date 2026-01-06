@@ -5,9 +5,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: FaGithub, href: 'https://github.com', label: 'GitHub' },
-    { icon: FaLinkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: FaEnvelope, href: 'mailto:contact@example.com', label: 'Email' }
+    { icon: FaGithub, href: 'https://github.com/Jenitha23', label: 'GitHub' },
+    { icon: FaLinkedin, href: 'www.linkedin.com/in/jenitha-johnson-maxi-84631621b', label: 'LinkedIn' },
+    { icon: FaEnvelope, href: 'jenithamaxi17@gmail.com', label: 'Email' }
   ];
 
   return (
@@ -40,7 +40,7 @@ const Footer = () => {
           >
             <span>© {currentYear} Portfolio. Made with</span>
             <FaHeart className="text-emerald-400 animate-pulse" size={14} />
-            <span>by Your Name</span>
+            <span>Jenitha</span>
           </motion.div>
         </div>
       </div>
