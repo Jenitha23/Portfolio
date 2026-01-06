@@ -4,7 +4,7 @@ A stunning, professional personal portfolio website built with React, Vite, Tail
 
 ## Live Demo
 
-🚀 [View Live Demo](https://your-portfolio-url.vercel.app)
+🚀 [View Live Demo](https://jenitha-portfolio.vercel.app/)
 
 ## Tech Stack
 
@@ -136,19 +136,7 @@ Or connect your GitHub repository to Vercel for automatic deployments.
 - `npm run preview` - Preview production build locally
 - `npm run lint` - Run ESLint
 
-## Performance
 
-- Lighthouse Score: 95+
-- First Contentful Paint: < 1.5s
-- Time to Interactive: < 3s
-- Fully responsive across all devices
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
 
 ## License
 
@@ -156,9 +144,9 @@ MIT License - feel free to use this template for your own portfolio!
 
 ## Contact
 
-- **Email:** contact@example.com
-- **GitHub:** [github.com/yourusername](https://github.com)
-- **LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com)
+- **Email:** jenithamaxi17@gmail.com
+- **GitHub:** [github.com/yourusername](https://github.com/Jenitha23)
+- **LinkedIn:** [linkedin.com/in/yourprofile](www.linkedin.com/in/jenitha-johnson-maxi-84631621b)
 
 ---
 
