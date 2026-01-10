@@ -1,11 +1,11 @@
 export const projects = [
   {
     id: 1,
-    title: "AI-Powered Task Manager",
-    description: "A smart task management application that uses machine learning to prioritize tasks and predict completion times.",
-    tech: ["React", "Python", "TensorFlow", "MySQL"],
-    github: "https://github.com",
-    demo: null
+    title: "Hotel Management System",
+    description: "Hotel Management System is a full-stack web app where customers can book rooms and order food, staff manage bookings and orders, and admins oversee users and analytics. Built with React and Spring Boot.",
+    tech: ["Java Springboot", "React", "Html", "MySQL", "CSS", "Docker", "Vercel","Azurer"],
+    github: "https://github.com/Jenitha23/Hotel-Management-System-Frontend",
+    demo: "https://frontend-palmbeachresort.vercel.app/"
   },
   {
     id: 2,
