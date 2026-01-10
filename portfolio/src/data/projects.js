@@ -9,19 +9,19 @@ export const projects = [
   },
   {
     id: 2,
-    title: "IoT Home Automation System",
-    description: "ESP32-based smart home system with mobile app control, sensor monitoring, and automated routines.",
-    tech: ["ESP32", "React", "AWS IoT", "Docker"],
-    github: "https://github.com",
-    demo: null
+    title: "Portfolio",
+    description: "A modern, responsive personal portfolio built with React, Vite, and Tailwind CSS. Showcases my projects, skills, certifications, and contact information with smooth animations, interactive elements, and an elegant emerald-teal gradient theme.",
+    tech: ["React", "Html", "CSS", "Vercel"],
+    github: "https://github.com/Jenitha23/Portfolio",
+    demo: "https://jenitha-portfolio.vercel.app/"
   },
   {
     id: 3,
-    title: "Real-Time Collaborative Code Editor",
-    description: "Web-based code editor supporting multiple users with live syntax highlighting and execution.",
-    tech: ["React", "Node.js", "WebSockets", "Docker"],
-    github: "https://github.com",
-    demo: "https://example.com"
+    title: "TestLang-Java-Backend-API-Testing-DSL",
+    description: "Is a custom Domain-Specific Language (DSL) designed to simplify the process of writing and running HTTP API tests. Instead of manually writing JUnit code, you can describe REST API tests (GET, POST, DELETE, PUT) in an easy-to-read .test file. The translator reads the .test file and generates runnable JUnit 5 test code (GeneratedTests.java) that sends real HTTP requests to a backend server and verifies responses including status codes and body contents.",
+    tech: ["Java", "HTML", "CSS", "Parser", "Lexer" ],
+    github: "https://github.com/Jenitha23/TestLang-Java-Backend-API-Testing-DSL",
+    demo: null
   },
   {
     id: 4,
