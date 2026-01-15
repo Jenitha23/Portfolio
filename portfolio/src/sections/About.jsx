@@ -339,14 +339,14 @@ const About = () => {
                       <div className="relative mb-6">
                         <div className="absolute left-[-26px] top-0 w-4 h-4 rounded-full bg-emerald-400 border-4 border-gray-900"></div>
                         <h5 className="text-lg font-semibold text-white mb-1">
-                          BSc in Computer Science
+                          BSc(Hons) in Computer Science
                         </h5>
                         <p className="text-emerald-300 font-medium mb-1">
                           Sri Lanka Institute of Information Technology (SLIIT)
                         </p>
                         <p className="text-gray-400">2023 - Present</p>
                         <p className="text-sm text-gray-300 mt-2">
-                          Specializing in software engineering, algorithms, and emerging technologies
+
                         </p>
                       </div>
                     </div>
