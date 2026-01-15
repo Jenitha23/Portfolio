@@ -1,30 +1,11 @@
+// src/sections/Hero.jsx
 import { motion } from "framer-motion";
-import { FaArrowDown, FaGithub, FaLinkedin, FaCode, FaServer, FaBrain, FaUpload } from "react-icons/fa";
+import { FaArrowDown, FaGithub, FaLinkedin, FaCode, FaServer, FaBrain } from "react-icons/fa";
 import { SiReact, SiNodedotjs, SiPython } from "react-icons/si";
-import { useState } from "react";
 
 const Hero = () => {
-  const [photoUploaded, setPhotoUploaded] = useState(false);
-  const [photoPreview, setPhotoPreview] = useState(null);
-
   const scrollToSection = (id) => {
     document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handlePhotoUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPhotoPreview(reader.result);
-        setPhotoUploaded(true);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const triggerFileInput = () => {
-    document.getElementById('photo-upload').click();
   };
 
   const tiltEffect = {
@@ -237,7 +218,7 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right photo section with upload functionality */}
+          {/* Right photo section - Updated with GitHub avatar link */}
           <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -256,57 +237,30 @@ const Hero = () => {
                 <div className="w-full h-full rounded-full bg-[#0a0f1f]"></div>
               </motion.div>
 
-              {/* Hidden file input */}
-              <input
-                  id="photo-upload"
-                  type="file"
-                  accept="image/*"
-                  onChange={handlePhotoUpload}
-                  className="hidden"
-              />
-
-              {/* Photo container with upload option */}
-              <div
-                  onClick={triggerFileInput}
-                  className="absolute inset-8 rounded-full overflow-hidden border-4 border-dashed border-gray-700/50
+              {/* Photo container with GitHub avatar */}
+              <div className="absolute inset-8 rounded-full overflow-hidden border-4 border-emerald-500/30
                 shadow-2xl shadow-emerald-500/20 bg-gradient-to-br from-emerald-400/10 to-cyan-400/10
-                hover:border-emerald-400/50 hover:bg-emerald-400/20 transition-all duration-300
-                cursor-pointer group"
+                group cursor-pointer"
               >
-                {photoUploaded && photoPreview ? (
-                    <div className="w-full h-full">
-                      <img
-                          src={photoPreview}
-                          alt="Profile"
-                          className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300
-                    flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <div className="text-center">
-                          <FaUpload className="text-2xl text-white mb-2 mx-auto" />
-                          <p className="text-white text-sm">Change Photo</p>
-                        </div>
-                      </div>
-                    </div>
-                ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center p-4">
-                      <div className="text-4xl mb-4 text-emerald-400/70 group-hover:text-emerald-400
-                    transition-colors duration-300">
-                        👩💻
-                      </div>
-                      <FaUpload className="text-2xl text-emerald-400/50 mb-3 group-hover:text-emerald-400
-                    group-hover:scale-110 transition-all duration-300" />
-                      <p className="text-gray-300 text-sm font-medium mb-1 text-center group-hover:text-emerald-300">
-                        Upload Your Photo
-                      </p>
-                      <p className="text-gray-500 text-xs text-center">
-                        Click to upload profile picture
-                      </p>
-                      <p className="text-gray-600 text-xs text-center mt-2">
-                        Recommended: Square photo, 400x400px
-                      </p>
-                    </div>
-                )}
+                {/* GitHub Avatar */}
+                <img
+                    src="https://avatars.githubusercontent.com/u/123376847?v=4"
+                    alt="Jenitha Johnson Maxi"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent
+                  opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                {/* GitHub link indicator */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100
+                  transition-opacity duration-300">
+                  <div className="text-center">
+                    <FaGithub className="text-3xl text-white mb-2 mx-auto" />
+                    <p className="text-white text-sm font-medium">GitHub Profile</p>
+                  </div>
+                </div>
               </div>
 
               {/* Floating badges */}
