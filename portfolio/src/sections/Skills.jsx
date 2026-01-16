@@ -105,17 +105,7 @@ const Skills = () => {
                       </div>
                     </div>
 
-                    {/* Progress Bar */}
-                    <div className="mb-6">
-                      <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
-                        <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: "100%" }}
-                            transition={{ duration: 1, delay: categoryIndex * 0.1 }}
-                            className="h-full bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full"
-                        />
-                      </div>
-                    </div>
+                    {/* Progress Bar (removed) */}
 
                     {/* Skills List */}
                     <div className="flex flex-wrap gap-3">

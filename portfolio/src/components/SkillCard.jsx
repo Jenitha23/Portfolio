@@ -1,8 +1,57 @@
 // src/components/SkillCard.jsx
 import { motion } from 'framer-motion';
-import { FaCode } from 'react-icons/fa';
+import {
+  FaReact, FaJs, FaPalette, FaBolt, FaNodeJs,
+  FaPython, FaJava, FaDatabase, FaDocker, FaAws,
+  FaGitAlt, FaFigma, FaMobileAlt, FaServer, FaBug, FaMicrochip,
+  FaCube, FaLeaf
+} from 'react-icons/fa';
+import {
+  SiSpring, SiJsonwebtokens, SiMongodb, SiVercel,
+  SiTailwindcss, SiMaterialdesign, SiExpress
+} from 'react-icons/si';
+import { GiAbstract050 } from 'react-icons/gi';
 
 const SkillCard = ({ skill, index }) => {
+  // Map skill names to proper icons/symbols
+  const getIcon = (skillName) => {
+    const iconMap = {
+      // Frontend
+      'React': <FaReact />,
+      'JavaScript': <FaJs />,
+      'Material-UI': <SiMaterialdesign />,
+      'Framer Motion': <GiAbstract050 />,
+      'GSAP': <FaBolt />,
+      'Tailwind CSS': <SiTailwindcss />,
+
+      // Backend
+      'Node.js': <FaNodeJs />,
+      'Express': <SiExpress />,
+      'Python': <FaPython />,
+      'Java': <FaJava />,
+      'Spring Boot': <SiSpring />,
+      'JWT': <SiJsonwebtokens />,
+      'MySQL': <FaDatabase />,
+      'MongoDB': <SiMongodb />,
+
+      // Tools
+      'Git': <FaGitAlt />,
+      'Docker': <FaDocker />,
+      'AWS': <FaAws />,
+      'Figma': <FaFigma />,
+      'Vercel': <SiVercel />,
+
+      // Design & Other
+      'UI/UX Design': <FaPalette />,
+      'Responsive Design': <FaMobileAlt />,
+      'REST APIs': <FaServer />,
+      'Testing': <FaBug />,
+      'Arduino': <FaMicrochip />
+    };
+
+    return iconMap[skillName] || <FaCube />;
+  };
+
   // Map skill names to colors (matching your theme)
   const getColor = (skillName) => {
     const colorMap = {
@@ -43,14 +92,7 @@ const SkillCard = ({ skill, index }) => {
   };
 
   const skillColor = getColor(skill.name);
-
-  // Get skill initials for icon
-  const getInitials = (skillName) => {
-    if (skillName.includes(' ')) {
-      return skillName.split(' ').map(word => word[0]).join('').toUpperCase();
-    }
-    return skillName.substring(0, 2).toUpperCase();
-  };
+  const SkillIcon = () => getIcon(skill.name);
 
   return (
       <motion.div
@@ -68,38 +110,22 @@ const SkillCard = ({ skill, index }) => {
         <div className="relative flex items-center gap-3 px-4 py-3 bg-gradient-to-br from-gray-900 to-black rounded-xl border border-gray-800 hover:border-emerald-500/30 transition-all duration-300 group">
           {/* Icon with gradient background */}
           <div
-              className="p-3 rounded-lg bg-gradient-to-br from-gray-800 to-black group-hover:from-emerald-900/30 group-hover:to-cyan-900/30 transition-all duration-300 flex items-center justify-center min-w-[44px]"
-              style={{ boxShadow: `0 0 20px ${skillColor}20` }}
+              className="p-3 rounded-lg bg-gradient-to-br from-gray-800 to-black group-hover:from-emerald-900/30 group-hover:to-cyan-900/30 transition-all duration-300 flex items-center justify-center min-w-[44px] min-h-[44px]"
+              style={{
+                boxShadow: `0 0 20px ${skillColor}20`,
+                color: skillColor
+              }}
           >
-            <div
-                className="text-sm font-bold"
-                style={{ color: skillColor }}
-            >
-              {getInitials(skill.name)}
+            <div className="text-lg">
+              <SkillIcon />
             </div>
           </div>
 
-          {/* Skill name */}
+          {/* Skill name - Removed percentage/progress line */}
           <div className="flex-1">
-          <span className="text-white font-medium group-hover:text-emerald-300 transition-colors">
-            {skill.name}
-          </span>
-
-            {/* Animated level indicator */}
-            <div className="flex items-center gap-2 mt-1">
-              <div className="w-16 h-1 bg-gray-800 rounded-full overflow-hidden">
-                <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "100%" }}
-                    transition={{ duration: 1, delay: index * 0.05 }}
-                    className="h-full rounded-full"
-                    style={{ backgroundColor: skillColor }}
-                />
-              </div>
-              <span className="text-xs text-gray-400 font-medium">
-              {Math.floor(70 + Math.random() * 25)}%
+            <span className="text-white font-medium group-hover:text-emerald-300 transition-colors">
+              {skill.name}
             </span>
-            </div>
           </div>
 
           {/* Animated dot */}
