@@ -1,0 +1,346 @@
+/* src/components/common/Footer.css */
+.footer {
+  position: relative;
+  background: linear-gradient(to bottom, #111827, #000000);
+  border-top: 1px solid rgba(16, 185, 129, 0.1);
+  overflow: hidden;
+}
+
+.footer-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.footer-blob-1 {
+  position: absolute;
+  top: -5rem;
+  left: 25%;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(16, 185, 129, 0.05);
+  border-radius: 9999px;
+  filter: blur(64px);
+}
+
+.footer-blob-2 {
+  position: absolute;
+  bottom: -5rem;
+  right: 25%;
+  width: 16rem;
+  height: 16rem;
+  background: rgba(6, 182, 212, 0.05);
+  border-radius: 9999px;
+  filter: blur(64px);
+}
+
+.footer-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: 
+    linear-gradient(to right, #10b981 1px, transparent 1px),
+    linear-gradient(to bottom, #10b981 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.footer-container {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .footer-container {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-container {
+    padding: 3rem 2rem;
+  }
+}
+
+.footer-grid-container {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Brand Section */
+.brand-container {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .brand-container {
+    text-align: left;
+  }
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .brand-wrapper {
+    justify-content: flex-start;
+  }
+}
+
+.brand-icon {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(to bottom right, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+}
+
+.brand-icon svg {
+  color: #10b981;
+  font-size: 1.25rem;
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.brand-gradient {
+  background: linear-gradient(to right, #10b981, #06b6d4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-description {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .brand-description {
+    margin: 0;
+  }
+}
+
+/* Quick Links */
+.quick-links-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.quick-links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.quick-link {
+  padding: 0.375rem 1rem;
+  font-size: 0.875rem;
+  background: linear-gradient(to right, #1f2937, #111827);
+  color: #d1d5db;
+  border-radius: 0.5rem;
+  border: 1px solid #374151;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.quick-link:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #10b981;
+  transform: translateY(-2px);
+}
+
+/* Social Links */
+.connect-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .connect-title {
+    text-align: right;
+  }
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .social-links {
+    justify-content: flex-end;
+  }
+}
+
+.social-link {
+  position: relative;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-link.github {
+  background: linear-gradient(to bottom right, #374151, #111827);
+}
+
+.social-link.github:hover {
+  background: linear-gradient(to bottom right, #1f2937, #000000);
+}
+
+.social-link.linkedin {
+  background: linear-gradient(to bottom right, #2563eb, #1e3a8a);
+}
+
+.social-link.linkedin:hover {
+  background: linear-gradient(to bottom right, #1d4ed8, #1e40af);
+}
+
+.social-link.email {
+  background: linear-gradient(to bottom right, #f43f5e, #db2777);
+}
+
+.social-link.email:hover {
+  background: linear-gradient(to bottom right, #e11d48, #be185d);
+}
+
+.social-link svg {
+  color: white;
+  font-size: 1.125rem;
+}
+
+.social-tooltip {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-link:hover .social-tooltip {
+  opacity: 1;
+}
+
+/* Footer Divider */
+.footer-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.3), transparent);
+  margin-bottom: 2rem;
+}
+
+/* Copyright Section */
+.copyright-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .copyright-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.copyright-text {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.copyright-heart {
+  color: #10b981;
+  animation: pulse 2s infinite;
+  margin: 0 0.25rem;
+}
+
+.copyright-name {
+  color: #10b981;
+  font-weight: 500;
+}
+
+.tech-stack {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.tech-icon {
+  color: #10b981;
+  animation: bounce 2s infinite;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #10b981, #06b6d4);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+  transition: all 0.3s ease;
+  z-index: 40;
+  border: none;
+  cursor: pointer;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.5);
+}
+
+.back-to-top svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-25%); }
+}

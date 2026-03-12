@@ -1,0 +1,91 @@
+/* src/components/cards/SkillCard.css */
+.skill-card-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.skill-card-glow {
+  position: absolute;
+  inset: -0.125rem;
+  background: linear-gradient(to right, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+  border-radius: 0.75rem;
+  filter: blur(0.5rem);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.skill-card-wrapper:hover .skill-card-glow {
+  opacity: 0.5;
+}
+
+.skill-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(to bottom right, #111827, #000000);
+  border-radius: 0.75rem;
+  border: 1px solid #1f2937;
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.skill-icon-wrapper {
+  padding: 0.75rem;
+  background: linear-gradient(to bottom right, #1f2937, #000000);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover .skill-icon-wrapper {
+  background: linear-gradient(to bottom right, rgba(16, 185, 129, 0.3), rgba(6, 182, 212, 0.3));
+}
+
+.skill-icon {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.skill-name-container {
+  flex: 1;
+}
+
+.skill-name-text {
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.skill-card:hover .skill-name-text {
+  color: #10b981;
+}
+
+.skill-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  margin-left: 0.5rem;
+  animation: skill-pulse 2s infinite;
+}
+
+@keyframes skill-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}

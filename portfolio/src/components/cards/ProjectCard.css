@@ -1,0 +1,205 @@
+/* src/components/cards/ProjectCard.css */
+
+.project-card {
+  position: relative;
+  background: linear-gradient(145deg, #0d1420, #080d16);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  border: 1px solid rgba(31, 41, 55, 0.7);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+
+  /* flex column so description grows and buttons stay pinned at bottom */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* glow layer that becomes visible on hover */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.375rem;
+  background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(6,182,212,0.25));
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.project-card:hover::before { opacity: 1; }
+
+.project-card:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 28px 50px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(16,185,129,0.1);
+}
+
+/* ensure all direct children sit above the glow layer */
+.project-card > * { position: relative; z-index: 1; }
+
+/* ─── Header row: title + icon ─── */
+.project-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.project-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.35;
+  flex: 1;
+  transition: color 0.25s ease;
+}
+
+.project-card:hover .project-title { color: #10b981; }
+
+.project-title-icon {
+  color: rgba(16,185,129,0.5);
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+  transition: color 0.25s ease;
+}
+
+.project-card:hover .project-title-icon { color: #10b981; }
+
+/* ─── Accent line under title ─── */
+.project-divider {
+  width: 2.5rem;
+  height: 2px;
+  background: linear-gradient(to right, #10b981, #06b6d4);
+  border-radius: 9999px;
+  margin-bottom: 0.875rem;
+  transition: width 0.35s ease;
+}
+
+.project-card:hover .project-divider { width: 4rem; }
+
+/* ─── Description (grows to fill space) ─── */
+.project-description {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  flex: 1;                   /* push everything below to bottom */
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Tech badges ─── */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid rgba(31, 41, 55, 0.6);
+}
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(16, 185, 129, 0.08);
+  color: #6ee7b7;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.tech-badge:hover {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #10b981;
+  transform: translateY(-2px);
+}
+
+/* ─── Action buttons (always pinned at bottom) ─── */
+.project-links {
+  display: flex;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  padding-top: 0.875rem;
+  border-top: 1px solid rgba(31, 41, 55, 0.6);
+  margin-top: auto;
+}
+
+.project-link {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.project-link.github {
+  background: linear-gradient(145deg, #1a2234, #111827);
+  color: #d1d5db;
+  border: 1px solid rgba(55, 65, 81, 0.8);
+}
+
+.project-link.github:hover {
+  background: linear-gradient(145deg, rgba(16,185,129,0.1), rgba(6,182,212,0.1));
+  border-color: rgba(16, 185, 129, 0.45);
+  color: #10b981;
+  transform: translateY(-2px);
+}
+
+.project-link.demo {
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+  color: white;
+  border: 1px solid transparent;
+}
+
+.project-link.demo:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
+}
+
+.project-link.disabled {
+  background: linear-gradient(145deg, #0d1117, #0a0f1a);
+  color: #4b5563;
+  border: 1px solid rgba(55, 65, 81, 0.4);
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.project-link svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.project-link:not(.disabled):hover svg { transform: scale(1.15); }
+
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .project-card   { padding: 1.25rem; }
+  .project-title  { font-size: 1rem; }
+  .project-description { font-size: 0.875rem; }
+  .project-links  { flex-direction: column; }
+}
