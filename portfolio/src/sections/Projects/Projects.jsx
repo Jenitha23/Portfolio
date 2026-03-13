@@ -1,23 +1,124 @@
 // src/sections/Projects/Projects.jsx
-import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaStar, FaCode, FaRocket } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt, FaStar, FaCode, FaRocket, FaTimes } from 'react-icons/fa';
 import { projects } from '../../data/projects';
 import './Projects.css';
 
+/* ── Portal wrapper so AnimatePresence works correctly ── */
+const Modal = ({ project, onClose }) => {
+  // Close on Escape key
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [onClose]);
+
+  return createPortal(
+    <div className="modal-root">
+      {/* Backdrop */}
+      <motion.div
+        className="modal-backdrop"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      />
+
+      {/* Centered wrapper */}
+      <div className="modal-wrapper">
+        <motion.div
+          className="modal-panel"
+          initial={{ opacity: 0, scale: 0.9, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 30 }}
+          transition={{ type: 'spring', stiffness: 280, damping: 26 }}
+        >
+          {/* Close */}
+          <button className="modal-close" onClick={onClose} aria-label="Close">
+            <FaTimes />
+          </button>
+
+          {/* Image */}
+          {project.images && (
+            <div className="modal-image-wrap">
+              <img src={project.images} alt={project.title} className="modal-image" />
+              <div className="modal-image-overlay" />
+              {project.featured && (
+                <div className="featured-badge">
+                  <FaStar /><span>Featured</span>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Body */}
+          <div className="modal-body">
+            <div className="modal-header">
+              <h2 className="modal-title">{project.title}</h2>
+              <FaCode className="modal-code-icon" />
+            </div>
+            <div className="modal-divider" />
+            <p className="modal-description">{project.description}</p>
+
+            <div className="modal-tech-section">
+              <h4 className="modal-tech-label">Tech Stack</h4>
+              <div className="modal-tech-list">
+                {project.tech.map((tech) => (
+                  <span key={tech} className="tech-item">{tech}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className="modal-actions">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-action-btn github"
+              >
+                <FaGithub /><span>GitHub</span>
+              </a>
+              {project.demo ? (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-action-btn demo"
+                >
+                  <FaExternalLinkAlt /><span>Live Demo</span>
+                </a>
+              ) : (
+                <button className="project-action-btn disabled" disabled>
+                  <FaExternalLinkAlt /><span>Coming Soon</span>
+                </button>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>,
+    document.body
+  );
+};
+
+/* ══════════════════════════════════
+   Main Section
+   ══════════════════════════════════ */
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   return (
     <section id="projects" className="projects-section">
-
-      {/* Background */}
       <div className="projects-background">
-        <div className="projects-blob-1"></div>
-        <div className="projects-blob-2"></div>
-        <div className="projects-grid-bg"></div>
+        <div className="projects-blob-1" />
+        <div className="projects-blob-2" />
+        <div className="projects-grid-bg" />
       </div>
 
       <div className="projects-container">
-
-        {/* ── Title ── */}
+        {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,11 +131,10 @@ const Projects = () => {
               <motion.div
                 className="projects-title-underline-bar"
                 animate={{ x: [-300, 300] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
               />
             </div>
           </div>
-
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -45,14 +145,19 @@ const Projects = () => {
           </motion.h2>
         </motion.div>
 
-        {/* ── Projects Grid ── */}
+        {/* Grid */}
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              onClick={() => setSelectedProject(project)}
+            />
           ))}
         </div>
 
-        {/* ── CTA ── */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +166,7 @@ const Projects = () => {
           className="projects-cta"
         >
           <div className="cta-wrapper">
-            <div className="cta-glow"></div>
+            <div className="cta-glow" />
             <a
               href="https://github.com/Jenitha23"
               target="_blank"
@@ -77,132 +182,58 @@ const Projects = () => {
             </a>
           </div>
         </motion.div>
-
       </div>
+
+      {/* Modal — AnimatePresence wraps Modal component directly */}
+      <AnimatePresence>
+        {selectedProject && (
+          <Modal
+            key="project-modal"
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
 
 /* ══════════════════════════════════
-   ProjectCard Component
+   ProjectCard
    ══════════════════════════════════ */
-const ProjectCard = ({ project, index }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -6 }}
-      className="project-card-wrapper"
-    >
-      <motion.div
-        whileHover={{ rotateY: 2, rotateX: 2 }}
-        className="project-card-3d"
-      >
-        {/* Glow edge */}
-        <div className="project-card-glow"></div>
-
-        {/* ID badge — top right */}
-        <div className="project-id-badge">
-          <div className="project-id-glow"></div>
-          <div className="project-id">
-            <span>#{project.id}</span>
-          </div>
-        </div>
-
-        {/* Featured badge — top left */}
-        {project.id <= 3 && (
-          <div className="featured-badge">
-            <FaStar />
-            <span>Featured</span>
+const ProjectCard = ({ project, index, onClick }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    viewport={{ once: true }}
+    className="project-card-wrapper"
+    onClick={onClick}
+  >
+    <div className="project-card">
+      <div className="project-card-image-wrap">
+        {project.images ? (
+          <img src={project.images} alt={project.title} className="project-card-img" />
+        ) : (
+          <div className="project-card-placeholder">
+            <FaCode className="placeholder-icon" />
           </div>
         )}
-
-        {/* ── Content (flex:1 — grows) ── */}
-        <div className="project-content">
-
-          <div className="project-header">
-            <h3>{project.title}</h3>
-            <FaCode className="project-code-icon" />
-          </div>
-
-          <div className="project-description-wrapper">
-            <div className="project-description-line"></div>
-            <p className="project-description">{project.description}</p>
-          </div>
-
+        <div className="project-card-hover-overlay">
+          <span className="project-card-click-hint">Click to explore</span>
         </div>
-
-        {/* ── Tech Stack ── */}
-        <div className="tech-stack-section">
-          <h4 className="tech-stack-title">Tech Stack</h4>
-          <div className="tech-stack-list">
-            {project.tech.map((tech, techIndex) => (
-              <motion.span
-                key={tech}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.05 + techIndex * 0.04 }}
-                whileHover={{ scale: 1.08, y: -2 }}
-                className="tech-item"
-              >
-                {tech}
-              </motion.span>
-            ))}
+        {project.featured && (
+          <div className="featured-badge">
+            <FaStar /><span>Featured</span>
           </div>
-        </div>
-
-        {/* ── Action Buttons (always at bottom) ── */}
-        <div className="project-actions">
-          <motion.a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            className="project-action-btn github"
-          >
-            <FaGithub />
-            <span>GitHub</span>
-          </motion.a>
-
-          {project.demo ? (
-            <motion.a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              className="project-action-btn demo"
-            >
-              <FaExternalLinkAlt />
-              <span>Live Demo</span>
-            </motion.a>
-          ) : (
-            <motion.button
-              className="project-action-btn disabled"
-              disabled
-            >
-              <FaExternalLinkAlt />
-              <span>Coming Soon</span>
-            </motion.button>
-          )}
-        </div>
-
-        {/* Particles */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="project-particle"
-            animate={{ y: [0, -15, 0], x: Math.sin(i) * 8 }}
-            transition={{ duration: 3 + i, repeat: Infinity, delay: i * 0.5 }}
-            style={{ left: `${15 + i * 25}%`, bottom: '8%' }}
-          />
-        ))}
-      </motion.div>
-    </motion.div>
-  );
-};
+        )}
+      </div>
+      <div className="project-card-footer">
+        <h3 className="project-card-title">{project.title}</h3>
+        <span className="project-card-arrow">→</span>
+      </div>
+    </div>
+  </motion.div>
+);
 
 export default Projects;

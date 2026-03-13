@@ -2,38 +2,46 @@
 export const projects = [
   {
     id: 1,
-    title: "Hotel Management System",
-    description: "Hotel Management System is a full-stack web app where customers can book rooms and order food, staff manage bookings and orders, and admins oversee users and analytics. Built with React and Spring Boot.",
-    tech: ["Java Springboot", "React", "MySQL", "Docker", "Vercel", "Azure"],
+    title: "Palm Beach Resort - Hotel Management System",
+    description:
+      "Palm Beach Resort is a full-stack hotel management web application that allows customers to browse rooms, make bookings, and order food online. Staff can manage reservations, room availability, and orders while administrators oversee system operations and analytics. The system includes role-based access control and a responsive user interface.",
+    tech: ["React", "Java Spring Boot", "MySQL", "Docker", "Vercel", "Azure", "Jira"],
     github: "https://github.com/Jenitha23/Hotel-Management-System-Frontend",
     demo: "https://frontend-palmbeachresort.vercel.app/",
-    featured: true
+    images: "/project2.png",
+    featured: false
   },
   {
     id: 2,
-    title: "Portfolio Website",
-    description: "A modern, responsive personal portfolio built with React, Vite, and Tailwind CSS. Showcases my projects, skills, certifications, and contact information with smooth animations, interactive elements, and an elegant emerald-teal gradient theme.",
-    tech: ["React", "Tailwind CSS", "Framer Motion", "Vercel"],
-    github: "https://github.com/Jenitha23/Portfolio",
-    demo: "https://jenitha-portfolio.vercel.app/",
-    featured: true
+    title: "Verdant Plant Shop",
+    description:
+      "Verdant is a modern e-commerce web application for selling plants online. The platform allows users to browse plant collections, view detailed product pages, add items to cart, and place orders. It features a nature-inspired UI design with smooth animations and a clean shopping experience.",
+    tech: ["React", "Node.js", "Java spring-boot", "SQL", "Vite", "CSS", "Docker", "Azure"],
+    github: "https://github.com/Jenitha23/Verdant-Frontend",
+    demo: "https://verdant-plantshop.vercel.app/",
+    images: "/Project1.png",
+    featured: false
   },
   {
     id: 3,
-    title: "TestLang - Java Backend API Testing DSL",
-    description: "A custom Domain-Specific Language (DSL) designed to simplify writing and running HTTP API tests. Translates .test files into runnable JUnit 5 test code that sends real HTTP requests and verifies responses including status codes and body contents.",
-    tech: ["Java", "ANTLR", "Parser", "Lexer", "JUnit 5"],
-    github: "https://github.com/Jenitha23/TestLang-Java-Backend-API-Testing-DSL",
-    demo: null,
-    featured: true
+    title: "PathFinder - Student Career Platform (Ongoing)",
+    description:
+      "PathFinder is a career platform designed for university students to discover job opportunities and build professional profiles. Students can upload CVs, manage skills, and apply for jobs while companies can post opportunities and review candidate profiles. The project focuses on role-based access, profile management, and job matching features.",
+    tech: ["React", ".NET", "SQL", "Docker", "Azure", "CI/CD", "Jira"],
+    github: "https://github.com/Jenitha23/PathFinder_frontend",
+    demo: "https://pathfinder-frontend-navy.vercel.app/",
+    images: "/project4.png",
+    featured: false
   },
   {
     id: 4,
-    title: "Machine Learning Model Deployment Platform",
-    description: "Platform for deploying and monitoring ML models with automated scaling and performance analytics. Features real-time monitoring, automatic scaling, and comprehensive analytics dashboard.",
-    tech: ["Python", "FastAPI", "Docker", "AWS", "React", "MongoDB"],
-    github: "https://github.com",
-    demo: null,
+    title: "Personal Portfolio Website",
+    description:
+      "A modern and responsive portfolio website that showcases my projects, skills, certifications, and experience. Built with React and Tailwind CSS, the site includes smooth animations, interactive sections, and a clean design to present my work as a computer science student and aspiring developer.",
+    tech: ["React", "Vite", "Tailwind CSS", "Framer Motion", "Vercel"],
+    github: "https://github.com/Jenitha23/Portfolio",
+    demo: "https://jenitha-portfolio.vercel.app/",
+    images: "/project3.png",
     featured: false
   }
 ];

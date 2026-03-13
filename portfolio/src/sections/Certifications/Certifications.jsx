@@ -1,38 +1,108 @@
 // src/sections/Certifications/Certifications.jsx
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { certifications } from '../../data/certifications';
 import {
-  FaCloud,
   FaBrain,
   FaCode,
   FaChartBar,
-  FaMicrochip,
   FaAward,
-  FaGraduationCap
+  FaGraduationCap,
+  FaTimes,
+  FaExpand
 } from 'react-icons/fa';
 import './Certifications.css';
 
-const Certifications = () => {
-  const getPlatformIcon = (platform) => {
-    const iconMap = {
-      "Amazon Web Services":           <FaCloud />,
-      "Coursera - Stanford University": <FaBrain />,
-      "freeCodeCamp":                  <FaCode />,
-      "Udemy":                         <FaAward />,
-      "DataCamp":                      <FaChartBar />,
-      "Cisco Networking Academy":      <FaMicrochip />,
-    };
-    return iconMap[platform] || <FaAward />;
+/* ── Icon map ── */
+const getPlatformIcon = (icon) => {
+  const map = {
+    code:  <FaCode />,
+    chart: <FaChartBar />,
+    brain: <FaBrain />,
   };
+  return map[icon] || <FaAward />;
+};
+
+/* ══════════════════════════════════
+   Image Lightbox (portal)
+   ══════════════════════════════════ */
+const Lightbox = ({ cert, onClose }) => {
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [onClose]);
+
+  return createPortal(
+    <div className="cert-modal-root">
+      {/* Backdrop */}
+      <motion.div
+        className="cert-modal-backdrop"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      />
+
+      {/* Centered panel */}
+      <div className="cert-modal-wrapper">
+        <motion.div
+          className="cert-modal-panel"
+          initial={{ opacity: 0, scale: 0.88, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.88, y: 30 }}
+          transition={{ type: 'spring', stiffness: 280, damping: 26 }}
+        >
+          {/* Close */}
+          <button className="cert-modal-close" onClick={onClose} aria-label="Close">
+            <FaTimes />
+          </button>
+
+          {/* Certificate image */}
+          <div className="cert-modal-image-wrap">
+            <img
+              src={cert.image}
+              alt={cert.title}
+              className="cert-modal-image"
+            />
+          </div>
+
+          {/* Info strip */}
+          <div className="cert-modal-info">
+            <div className="cert-modal-icon">
+              {getPlatformIcon(cert.icon)}
+            </div>
+            <div className="cert-modal-text">
+              <h3 className="cert-modal-title">{cert.title}</h3>
+              <p className="cert-modal-platform">{cert.platform}</p>
+            </div>
+            <div className="cert-year-badge">
+              <div className="cert-year-dot" />
+              <span className="cert-year">{cert.year}</span>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </div>,
+    document.body
+  );
+};
+
+/* ══════════════════════════════════
+   Main Section
+   ══════════════════════════════════ */
+const Certifications = () => {
+  const [selected, setSelected] = useState(null);
 
   return (
     <section id="certifications" className="certifications-section">
 
       {/* Background */}
       <div className="certifications-background">
-        <div className="certifications-blob-1"></div>
-        <div className="certifications-blob-2"></div>
-        <div className="certifications-grid-bg"></div>
+        <div className="certifications-blob-1" />
+        <div className="certifications-blob-2" />
+        <div className="certifications-grid-bg" />
       </div>
 
       <div className="certifications-container">
@@ -50,11 +120,10 @@ const Certifications = () => {
               <motion.div
                 className="certifications-title-underline-bar"
                 animate={{ x: [-300, 300] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
               />
             </div>
           </div>
-
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -72,50 +141,50 @@ const Certifications = () => {
               key={cert.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
+              transition={{ duration: 0.45, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -5 }}
               className="cert-card"
+              onClick={() => setSelected(cert)}
             >
-              {/* Glow */}
-              <div className="cert-card-glow"></div>
+              <div className="cert-card-glow" />
 
               <div className="cert-card-content">
 
-                {/* Icon */}
-                <div className="cert-icon-wrapper">
-                  <div className="cert-icon">
-                    <div className="cert-icon-svg">
-                      {getPlatformIcon(cert.platform)}
-                    </div>
+                {/* Certificate image thumbnail */}
+                <div className="cert-thumb-wrap">
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    className="cert-thumb"
+                  />
+                  {/* hover overlay */}
+                  <div className="cert-thumb-overlay">
+                    <FaExpand className="cert-thumb-expand-icon" />
+                    <span>View Certificate</span>
                   </div>
                 </div>
 
-                {/* Animated accent line */}
-                <div className="cert-divider" />
+                {/* Info */}
+                <div className="cert-info">
+                  {/* Icon + divider */}
+                  <div className="cert-icon-row">
+                    <div className="cert-icon">
+                      <div className="cert-icon-svg">
+                        {getPlatformIcon(cert.icon)}
+                      </div>
+                    </div>
+                    <div className="cert-divider" />
+                  </div>
 
-                {/* Content */}
-                <div className="cert-content">
                   <h3 className="cert-title">{cert.title}</h3>
                   <p className="cert-platform">{cert.platform}</p>
 
-                  {/* Year badge — pinned to bottom via margin-top:auto on platform */}
                   <div className="cert-year-badge">
-                    <div className="cert-year-dot"></div>
+                    <div className="cert-year-dot" />
                     <span className="cert-year">{cert.year}</span>
                   </div>
                 </div>
 
-                {/* Particles */}
-                {[...Array(2)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="cert-particle"
-                    animate={{ y: [0, -10, 0], x: Math.sin(i) * 5 }}
-                    transition={{ duration: 2 + i, repeat: Infinity, delay: i * 0.5 }}
-                    style={{ left: `${20 + i * 40}%`, bottom: '8%' }}
-                  />
-                ))}
               </div>
             </motion.div>
           ))}
@@ -138,6 +207,17 @@ const Certifications = () => {
         </motion.div>
 
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {selected && (
+          <Lightbox
+            key="cert-lightbox"
+            cert={selected}
+            onClose={() => setSelected(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

@@ -2,56 +2,29 @@
 export const certifications = [
   {
     id: 1,
-    title: "AWS Certified Cloud Practitioner",
-    platform: "Amazon Web Services",
+    title: "Python for Beginners",
+    platform: "University of Moratuwa (CODL)",
     year: "2024",
-    icon: "cloud",
-    description: "Foundational cloud concepts and AWS services",
-    credentialId: "AWS-CCP-2024-001"
+    icon: "code",
+    description: "Online learning programme in Python conducted by the Department of Computer Science & Engineering, Faculty of Engineering, University of Moratuwa",
+    image: "/cert3.png"
   },
   {
     id: 2,
-    title: "Machine Learning Specialization",
-    platform: "Coursera - Stanford University",
-    year: "2023",
-    icon: "brain",
-    description: "Advanced ML algorithms and neural networks",
-    credentialId: "CORS-ML-2023-002"
+    title: "Mathematics for Data Science",
+    platform: "Simplilearn SkillUP",
+    year: "2025",
+    icon: "chart",
+    description: "Certificate of Completion for Mathematics for Data Science",
+    image: "/cert2.png"
   },
   {
     id: 3,
-    title: "Full Stack Web Development",
-    platform: "freeCodeCamp",
-    year: "2023",
-    icon: "code",
-    description: "Complete web development curriculum",
-    credentialId: "FCC-FSWD-2023-003"
-  },
-  {
-    id: 4,
-    title: "Docker & Kubernetes Mastery",
-    platform: "Udemy",
-    year: "2024",
-    icon: "container",
-    description: "Container orchestration and deployment",
-    credentialId: "UDMY-DK-2024-004"
-  },
-  {
-    id: 5,
-    title: "Python for Data Science",
-    platform: "DataCamp",
-    year: "2023",
-    icon: "chart",
-    description: "Data analysis and visualization with Python",
-    credentialId: "DCAMP-PDS-2023-005"
-  },
-  {
-    id: 6,
-    title: "IoT Fundamentals",
-    platform: "Cisco Networking Academy",
-    year: "2024",
-    icon: "chip",
-    description: "Internet of Things architecture and protocols",
-    credentialId: "CISCO-IoT-2024-006"
+    title: "Agile Scrum Master",
+    platform: "Simplilearn SkillUP",
+    year: "2025",
+    icon: "brain",
+    description: "Certificate of Completion for Agile Scrum Master",
+    image: "/cert1.png"
   }
 ];

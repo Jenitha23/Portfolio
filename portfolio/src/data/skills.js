@@ -14,8 +14,7 @@ export const skillCategories = [
   {
     category: "Backend Development",
     skills: [
-      { name: "Node.js" },
-      { name: "Express" },
+      { name: ".NET" },
       { name: "Python" },
       { name: "Java" },
       { name: "Spring Boot" },
@@ -31,6 +30,9 @@ export const skillCategories = [
       { name: "Docker" },
       { name: "AWS" },
       { name: "Figma" },
+      { name: "Azure" },
+      { name: "Selenium" },
+      { name: "Postman" },
       { name: "Vercel" }
     ]
   },
