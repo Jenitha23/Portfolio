@@ -48,7 +48,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="hero-role"
           >
-            Full Stack Dev, AI/ML &amp; Mathematics Enthusiast
+            Full Stack Dev, AI/ML &amp; DevOps
           </motion.p>
 
           {/* Description */}
@@ -62,7 +62,7 @@ const Hero = () => {
             passion for building elegant, impactful solutions at the intersection
             of <span className="hl-1">Full Stack Development</span>,{" "}
             <span className="hl-2">AI/ML</span>, and{" "}
-            <span className="hl-3">Mathematics</span>.
+            <span className="hl-3">DevOps</span>.
           </motion.p>
 
           {/* Action buttons */}
