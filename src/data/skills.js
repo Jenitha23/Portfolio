@@ -17,10 +17,11 @@ export const skillCategories = [
       { name: ".NET" },
       { name: "Python" },
       { name: "Java" },
+      { name: "C#" },
       { name: "Spring Boot" },
       { name: "JWT" },
       { name: "MySQL" },
-      { name: "MongoDB" }
+      { name: "SQL" }
     ]
   },
   {
