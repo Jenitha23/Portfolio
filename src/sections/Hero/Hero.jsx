@@ -88,7 +88,7 @@ const Hero = () => {
 
             <a
               href="/Jenitha_JohnsonMaxi_CV.pdf"
-              download="Jenitha_JohnsonMaxi_CV.pdf"
+              download="Jenitha_Johnson_Maxi_CV.pdf"
               className="btn-secondary"
             >
               <FiDownload className="btn-dl-icon" />
