@@ -13,7 +13,7 @@ export const projects = [
   },
   {
     id: 2,
-    title: null,
+    title: "Verdant – Online Plant Store",
     description:
       "Verdant is a modern e-commerce web application for selling plants online. The platform allows users to browse plant collections, view detailed product pages, add items to cart, and place orders. It features a nature-inspired UI design with smooth animations and a clean shopping experience.",
     tech: ["React", "Node.js", "Java spring-boot", "SQL", "Vite", "CSS", "Docker", "Azure"],
