@@ -43,5 +43,27 @@ export const projects = [
     demo: "https://jenitha-portfolio.vercel.app/",
     images: "/project3.png",
     featured: false
+  },
+  {
+    id: 5,
+    title: "BrewNest – Cafe Ordering Mobile Application",
+    description:
+      "BrewNest is a full-stack cafe ordering mobile application that provides a seamless digital ordering experience for customers while simplifying cafe operations for administrators. Customers can browse the menu, customize orders, manage their cart, make secure payments, and track order status in real time. The application also includes a dedicated admin portal for managing menu items, categories, inventory availability, and customer orders through an intuitive interface.",
+    tech: ["React Native", "Expo", "Spring Boot", "Spring Security", "JWT", "Microsoft SQL Server", "Docker", "REST API"],
+    github: "https://github.com/Jenitha23/BrewNest-Cafe-Ordering-Mobile-Application.git",
+    demo: null,
+    images: "/project5.png",
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Life Mentor – AI-Powered Wellbeing Platform",
+    description:
+      "Life Mentor is an AI-powered wellbeing application that supports users in developing healthier habits through daily check-ins, goal tracking, lifestyle assessments, and personalized AI guidance. The platform offers secure authentication, progress monitoring, wellbeing insights, and interactive AI conversations to encourage consistent personal growth and improved overall wellbeing.",
+    tech: ["React", "Vite", "Tailwind CSS", "Java", "Spring Boot", "Spring Security", "JWT", "Microsoft SQL Server", "Flyway", "Gemini AI", "Axios", "Docker"],
+    github: "https://github.com/Jenitha23/Life-Mentor-Frontend.git",
+    demo: null,
+    images: "/project6.png",
+    featured: false
   }
 ];
